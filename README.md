@@ -28,7 +28,7 @@
             border-radius: 20px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             text-align: center;
-            border: 1px: solid #30363d;
+            border: 1px solid #30363d;
         }
         .logo {
             width: 110px;
@@ -90,16 +90,19 @@
 <body>
 
     <div class="container">
-        <!-- Logo şəklinizin adını buraya yazın -->
         <img src="IMG-20260722-WA0073.jpg" class="logo" alt="Logo" onerror="this.style.display='none'">
         
         <h1>DÖVLƏT QULLUĞU</h1>
         <p class="subtitle">Resurslar, Qruplar və Kanallar</p>
         
+        <div class="section-title">Ümumi Resurslar</div>
+        <a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbCALY9BPzjZ5x9GrH3f" target="_blank">Dövlət Qulluğu WhatsApp Kanalımız</a>
+
         <div class="section-title">Qanunvericilik</div>
-        <a class="btn whatsapp" href="https://chat.whatsapp.com/DfoRdfktXVS5sK0SSNiRzQ" target="_blank">WhatsApp Qrupumuz</a>
-        <a class="btn telegram" href="https://t.me/PH_Qanunvericilik" target="_blank">Telegram Kanalımız</a>
-        <a class="btn telegram" href="https://t.me/PH_Qanunvericiliik" target="_blank">Telegram Qrupumuz</a>
+        <a class="btn whatsapp" href="https://chat.whatsapp.com/DfoRdfktXVS5sK0SSNiRzQ" target="_blank">Qanunvericilik WhatsApp Qrupumuz</a>
+        <a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbCuISL0QeaoiWCEka1S" target="_blank">Qanunvericilik WhatsApp Kanalımız</a>
+        <a class="btn telegram" href="https://t.me/PH_Qanunvericilik" target="_blank">Qanunvericilik Telegram Kanalımız</a>
+        <a class="btn telegram" href="https://t.me/PH_Qanunvericiliik" target="_blank">Qanunvericilik Telegram Qrupumuz</a>
         
         <div class="section-title">İnformatika</div>
         <a class="btn telegram" href="https://t.me/infoPHJ" target="_blank">İnformatika Telegram Qrupumuz</a>
