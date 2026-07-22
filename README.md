@@ -10,16 +10,13 @@
             font-family: Arial, sans-serif;
             background-color: #0d1117;
             color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
         .container {
             background: #161b22;
             width: 100%;
             max-width: 480px;
+            margin: 20px auto; /* Ortaya gətir */
             padding: 30px 20px;
             border-radius: 20px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -47,9 +44,7 @@
             letter-spacing: 0.5px;
         }
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block; /* flex əvəzinə block */
             width: 100%;
             padding: 14px;
             margin: 10px 0;
@@ -58,10 +53,9 @@
             color: white;
             font-size: 15px;
             font-weight: 600;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: opacity 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .btn:active { transform: scale(0.98); }
         .btn:hover { opacity: 0.9; }
         .whatsapp { background-color: #25D366; }
         .telegram { background-color: #0088cc; }
@@ -83,7 +77,7 @@
         <a class="btn whatsapp" href="https://chat.whatsapp.com/DfoRdfktXVS5sK0SSNiRzQ" target="_blank">Qanunvericilik WhatsApp Qrupumuz</a>
         <a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbCuISL0QeaoiWCEka1S" target="_blank">Qanunvericilik WhatsApp Kanalımız</a>
         <a class="btn telegram" href="https://t.me/PH_Qanunvericilik" target="_blank">Qanunvericilik Telegram Kanalımız</a>
-        <a class="btn telegram" href="https://t.me/PH_Qunvericiliik" target="_blank">Qanunvericilik Telegram Qrupumuz</a>
+        <a class="btn telegram" href="https://t.me/PH_Qanunvericiliik" target="_blank">Qanunvericilik Telegram Qrupumuz</a>
         
         <div class="section-title">İnformatika</div>
         <a class="btn telegram" href="https://t.me/infoPHJ" target="_blank">İnformatika Telegram Qrupumuz</a>
@@ -96,16 +90,21 @@
         <a class="btn telegram" href="https://t.me/azerbaycan_dili_PH" target="_blank">Azərbaycan Dili Telegram Qrupu</a>
 
         <div class="section-title">📚 Qanunvericilik Vəsaitləri</div>
-
         <p class="subtitle" style="font-size:13px;text-align:left;margin-bottom:15px;">
-        Aşağıdakı vəsaitlərdə <b>2026-cı il üzrə bu günədək qüvvəyə minmiş bütün əlavə və dəyişikliklər nəzərə alınmışdır.</b><br>
-        <b>Ən son yenilənmiş versiyadır.</b>
+        Aşağıdakı vəsaitlərdə <b>2026-cı il üzrə bu günədək qüvvəyə minmiş bütün əlavə və dəyişikliklər nəzərə alınmışdır.</b><br><b>Ən son yenilənmiş versiyadır.</b>
         </p>
+        <a class="btn telegram" href="AC.pdf" target="_blank">📄 AC</a>
+        <a class="btn telegram" href="BB-BA.pdf" target="_blank">📄 BB BA</a>
+        <a class="btn telegram" href="Kateqoriya.pdf" target="_blank">📄 DQ (Kateqoriya)</a>
+        <a class="btn telegram" href="Tasnifat.pdf" target="_blank">📄 DQ (Təsnifat)</a>
+        <a class="btn telegram" href="Ixtisas.pdf" target="_blank">📄 DQ (İxtisas dərəcəsi)</a>
 
-        <a class="btn telegram" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026.pdf" target="_blank">📄 AC</a>
+        <div class="section-title">Sosial Şəbəkə</div>
+        <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
+    </div>
 
-        <a class="btn telegram" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026.pdf" target="_blank">📄 BB BA</a>
-
+</body>
+</html>
         <a class="btn telegram" href="Pənah Hüseynov (Kateqoriyalar 01 avqust 2026).pdf" target="_blank">📄 DQ (Kateqoriya)</a>
 
         <a class="btn telegram" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026.pdf" target="_blank">📄 DQ (Təsnifat)</a>
