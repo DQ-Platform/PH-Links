@@ -88,10 +88,9 @@
         .btn-view { background-color: #0088cc; }
         .btn-download { background-color: #238636; }
         
-        /* Bildiriş elementi */
         #toast {
             visibility: hidden;
-            min-width: 250px;
+            min-width: 240px;
             background-color: #238636;
             color: #fff;
             text-align: center;
@@ -107,7 +106,7 @@
         }
         #toast.show {
             visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.4s, fadeout 0.4s 2.5s;
         }
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
@@ -150,38 +149,37 @@
         <!-- 1. PH-AC Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə</button>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 2. PH-BB&BA Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə</button>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 3. PH-Kateqoriyalar -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Kateqoriyalar.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadFile('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə</button>
+            <button class="btn btn-download" onclick="forceDownload('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 4. PH-DQ Təsnifat -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadFile('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə</button>
+            <button class="btn btn-download" onclick="forceDownload('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 5. PH-DQ İxtisas dərəcəsi -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')">📥 Yüklə</button>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')">📥 Yüklə</button>
         </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
         <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
     </div>
 
-    <!-- Uğurlu yükləmə mesajı üçün element -->
     <div id="toast">Fayl yüklənir...</div>
 
     <script>
@@ -192,38 +190,33 @@
             setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
 
-        function downloadFile(fileUrl, fileName) {
-            showToast("Fayl telefona endirilir...");
+        function forceDownload(url, filename) {
+            showToast("Yükləmə başladılır...");
             
-            fetch(fileUrl)
+            // Fetch vasitəsilə faylı ikili (binary) oxuyub birbaşa yükləmə qovluğuna yönləndiririk
+            fetch(url)
                 .then(response => {
-                    if (!response.ok) throw new Error('Şəbəkə xətası');
+                    if (!response.ok) throw new Error('Fayl tapılmadı');
                     return response.blob();
                 })
                 .then(blob => {
-                    // Təhlükəsiz olaraq application/octet-stream tipinə çeviririk ki, brauzer onu diskə yox, birbaşa yükləmələrə atsın
-                    const explicitBlob = new Blob([blob], { type: 'application/octet-stream' });
-                    const blobUrl = window.URL.createObjectURL(explicitBlob);
-                    
+                    const blobUrl = window.URL.createObjectURL(new Blob([blob], { type: 'application/octet-stream' }));
                     const a = document.createElement('a');
-                    a.style.display = 'none';
                     a.href = blobUrl;
-                    a.download = fileName;
-                    
+                    a.download = filename;
                     document.body.appendChild(a);
                     a.click();
-                    
                     setTimeout(() => {
                         window.URL.revokeObjectURL(blobUrl);
                         document.body.removeChild(a);
-                    }, 100);
+                    }, 200);
                 })
-                .catch(err => {
-                    // Əgər birbaşa oxumaq alınmasa, link vasitəsilə məcburi endirmə tetiklenir
+                .catch(e => {
+                    // Əgər lokal xəta baş verərsə, alternativ olaraq birbaşa link açılır
                     const a = document.createElement('a');
-                    a.href = fileUrl;
-                    a.download = fileName;
-                    a.setAttribute('target', '_blank');
+                    a.href = url;
+                    a.download = filename;
+                    a.target = '_blank';
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
@@ -232,3 +225,4 @@
     </script>
 </body>
 </html>
+
