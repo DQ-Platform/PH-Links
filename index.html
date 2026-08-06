@@ -69,6 +69,22 @@
         .whatsapp { background-color: #25D366; }
         .telegram { background-color: #0088cc; }
         .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+        /* PDF düymələrinin qruplaşdırılması üçün stil */
+        .pdf-group {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        .pdf-group .btn {
+            margin: 0;
+            flex: 1;
+            font-size: 14px;
+            padding: 12px 8px;
+        }
+        .btn-view { background-color: #0088cc; }
+        .btn-download { background-color: #238636; }
     </style>
 </head>
 <body>
@@ -105,24 +121,35 @@
         <b>Ən son yenilənmiş versiyadır.</b>
         </p>
 
+        <!-- 1. PH-AC Vəsait -->
+        <div class="pdf-group">
+            <a class="btn btn-view" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">👁️ Bax</a>
+            <a class="btn btn-download" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" download>📥 Yüklə: PH-AC</a>
+        </div>
 
-        <a class="btn telegram" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">📄 PH-AC Vəsait(2026)</a>
+        <!-- 2. PH-BB&BA Vəsait -->
+        <div class="pdf-group">
+            <a class="btn btn-view" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">👁️ Bax</a>
+            <a class="btn btn-download" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" download>📥 Yüklə: PH-BB&BA</a>
+        </div>
 
-<a class="btn telegram" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">📄 PH-BB&BA Vəsait(2026)</a>
+        <!-- 3. PH-Kateqoriyalar -->
+        <div class="pdf-group">
+            <a class="btn btn-view" href="Kateqoriyalar.pdf" target="_blank">👁️ Bax</a>
+            <a class="btn btn-download" href="Kateqoriyalar.pdf" download>📥 Yüklə: Kateqoriyalar</a>
+        </div>
 
-<a class="btn telegram" href="Kateqoriyalar.pdf" target="_blank">📄 PH-Kateqoriyalar(2026)</a>
+        <!-- 4. PH-DQ Təsnifat -->
+        <div class="pdf-group">
+            <a class="btn btn-view" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">👁️ Bax</a>
+            <a class="btn btn-download" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" download>📥 Yüklə: Təsnifat</a>
+        </div>
 
-<a class="btn telegram" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">
-📄 PH-DQ Təsnifat(2026)
-</a>
-
-<a class="btn telegram" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">
-📄 PH-DQ İxtisas dərəcəsi(2026)
-</a>
-        
-
-
-
+        <!-- 5. PH-DQ İxtisas dərəcəsi -->
+        <div class="pdf-group">
+            <a class="btn btn-view" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">👁️ Bax</a>
+            <a class="btn btn-download" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" download>📥 Yüklə: İxtisas</a>
+        </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
         <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
