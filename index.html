@@ -63,6 +63,8 @@
             font-weight: 600;
             transition: transform 0.2s ease, opacity 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border: none;
         }
         .btn:active { transform: scale(0.98); }
         .btn:hover { opacity: 0.9; }
@@ -70,7 +72,7 @@
         .telegram { background-color: #0088cc; }
         .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 
-        /* PDF düymələrinin qruplaşdırılması üçün stil */
+        /* PDF düymələrinin qruplaşdırılması */
         .pdf-group {
             display: flex;
             gap: 8px;
@@ -124,36 +126,60 @@
         <!-- 1. PH-AC Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">👁️ Bax</a>
-            <a class="btn btn-download" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" download>📥 Yüklə: PH-AC</a>
+            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə: PH-AC</button>
         </div>
 
         <!-- 2. PH-BB&BA Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">👁️ Bax</a>
-            <a class="btn btn-download" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" download>📥 Yüklə: PH-BB&BA</a>
+            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə: PH-BB&BA</button>
         </div>
 
         <!-- 3. PH-Kateqoriyalar -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Kateqoriyalar.pdf" target="_blank">👁️ Bax</a>
-            <a class="btn btn-download" href="Kateqoriyalar.pdf" download>📥 Yüklə: Kateqoriyalar</a>
+            <button class="btn btn-download" onclick="downloadPDF('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə: Kateqoriyalar</button>
         </div>
 
         <!-- 4. PH-DQ Təsnifat -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">👁️ Bax</a>
-            <a class="btn btn-download" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" download>📥 Yüklə: Təsnifat</a>
+            <button class="btn btn-download" onclick="downloadPDF('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə: Təsnifat</button>
         </div>
 
         <!-- 5. PH-DQ İxtisas dərəcəsi -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">👁️ Bax</a>
-            <a class="btn btn-download" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" download>📥 Yüklə: İxtisas</a>
+            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_derecesi_2026.pdf')">📥 Yüklə: İxtisas</button>
         </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
         <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
     </div>
 
+    <script>
+        function downloadPDF(fileUrl, fileName) {
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Fayl tapılmadı');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(a);
+                })
+                .catch(() => {
+                    // Əgər fetch lokal mühitdə (file://) məhdudiyyətə düşərsə, birbaşa yeni pəncərədə açır
+                    window.open(fileUrl, '_blank');
+                });
+        }
+    </script>
 </body>
 </html>
