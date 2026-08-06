@@ -87,6 +87,30 @@
         }
         .btn-view { background-color: #0088cc; }
         .btn-download { background-color: #238636; }
+        
+        /* Bildiriş elementi */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #238636;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body>
@@ -126,58 +150,83 @@
         <!-- 1. PH-AC Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə: PH-AC</button>
+            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 2. PH-BB&BA Vəsait -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə: PH-BB&BA</button>
+            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 3. PH-Kateqoriyalar -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Kateqoriyalar.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadPDF('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə: Kateqoriyalar</button>
+            <button class="btn btn-download" onclick="downloadFile('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 4. PH-DQ Təsnifat -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadPDF('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə: Təsnifat</button>
+            <button class="btn btn-download" onclick="downloadFile('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə</button>
         </div>
 
         <!-- 5. PH-DQ İxtisas dərəcəsi -->
         <div class="pdf-group">
             <a class="btn btn-view" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="downloadPDF('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_derecesi_2026.pdf')">📥 Yüklə: İxtisas</button>
+            <button class="btn btn-download" onclick="downloadFile('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')">📥 Yüklə</button>
         </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
         <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
     </div>
 
+    <!-- Uğurlu yükləmə mesajı üçün element -->
+    <div id="toast">Fayl yüklənir...</div>
+
     <script>
-        function downloadPDF(fileUrl, fileName) {
+        function showToast(text) {
+            var x = document.getElementById("toast");
+            x.innerText = text;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+
+        function downloadFile(fileUrl, fileName) {
+            showToast("Fayl telefona endirilir...");
+            
             fetch(fileUrl)
                 .then(response => {
-                    if (!response.ok) throw new Error('Fayl tapılmadı');
+                    if (!response.ok) throw new Error('Şəbəkə xətası');
                     return response.blob();
                 })
                 .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
+                    // Təhlükəsiz olaraq application/octet-stream tipinə çeviririk ki, brauzer onu diskə yox, birbaşa yükləmələrə atsın
+                    const explicitBlob = new Blob([blob], { type: 'application/octet-stream' });
+                    const blobUrl = window.URL.createObjectURL(explicitBlob);
+                    
                     const a = document.createElement('a');
                     a.style.display = 'none';
                     a.href = blobUrl;
                     a.download = fileName;
+                    
                     document.body.appendChild(a);
                     a.click();
-                    window.URL.revokeObjectURL(blobUrl);
-                    document.body.removeChild(a);
+                    
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(blobUrl);
+                        document.body.removeChild(a);
+                    }, 100);
                 })
-                .catch(() => {
-                    // Əgər fetch lokal mühitdə (file://) məhdudiyyətə düşərsə, birbaşa yeni pəncərədə açır
-                    window.open(fileUrl, '_blank');
+                .catch(err => {
+                    // Əgər birbaşa oxumaq alınmasa, link vasitəsilə məcburi endirmə tetiklenir
+                    const a = document.createElement('a');
+                    a.href = fileUrl;
+                    a.download = fileName;
+                    a.setAttribute('target', '_blank');
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                 });
         }
     </script>
