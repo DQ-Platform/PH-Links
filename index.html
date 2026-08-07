@@ -72,21 +72,30 @@
         .telegram { background-color: #0088cc; }
         .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 
-        /* PDF düymələrinin qruplaşdırılması */
+        /* Vəsait sətri üçün qrup dizaynı (Şəkildəki kimi uzun sol düymə + sağda yüklə) */
         .pdf-group {
             display: flex;
             gap: 8px;
-            margin: 10px 0;
+            margin: 8px 0;
             width: 100%;
         }
         .pdf-group .btn {
             margin: 0;
-            flex: 1;
             font-size: 14px;
-            padding: 12px 8px;
+            padding: 14px 10px;
         }
-        .btn-view { background-color: #0088cc; }
-        .btn-download { background-color: #238636; }
+        .btn-name {
+            flex: 4;
+            background-color: #0088cc;
+            justify-content: flex-start;
+            padding-left: 15px;
+            text-align: left;
+        }
+        .btn-download {
+            flex: 1;
+            background-color: #238636;
+            font-size: 18px;
+        }
         
         #toast {
             visibility: hidden;
@@ -148,32 +157,32 @@
 
         <!-- 1. PH-AC Vəsait -->
         <div class="pdf-group">
-            <a class="btn btn-view" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')">📥 Yüklə</button>
+            <a class="btn btn-name" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">📄 PH-AC Vəsait(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')" title="Yüklə">📥</button>
         </div>
 
         <!-- 2. PH-BB&BA Vəsait -->
         <div class="pdf-group">
-            <a class="btn btn-view" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')">📥 Yüklə</button>
+            <a class="btn btn-name" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">📄 PH-BB&BA Vəsait(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')" title="Yüklə">📥</button>
         </div>
 
         <!-- 3. PH-Kateqoriyalar -->
         <div class="pdf-group">
-            <a class="btn btn-view" href="Kateqoriyalar.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="forceDownload('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')">📥 Yüklə</button>
+            <a class="btn btn-name" href="Kateqoriyalar.pdf" target="_blank">📄 PH-Kateqoriyalar(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')" title="Yüklə">📥</button>
         </div>
 
         <!-- 4. PH-DQ Təsnifat -->
         <div class="pdf-group">
-            <a class="btn btn-view" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="forceDownload('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')">📥 Yüklə</button>
+            <a class="btn btn-name" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">📄 PH-DQ Təsnifat(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')" title="Yüklə">📥</button>
         </div>
 
         <!-- 5. PH-DQ İxtisas dərəcəsi -->
         <div class="pdf-group">
-            <a class="btn btn-view" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">👁️ Bax</a>
-            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')">📥 Yüklə</button>
+            <a class="btn btn-name" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">📄 PH-DQ İxtisas dərəcəsi(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')" title="Yüklə">📥</button>
         </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
@@ -193,7 +202,6 @@
         function forceDownload(url, filename) {
             showToast("Yükləmə başladılır...");
             
-            // Fetch vasitəsilə faylı ikili (binary) oxuyub birbaşa yükləmə qovluğuna yönləndiririk
             fetch(url)
                 .then(response => {
                     if (!response.ok) throw new Error('Fayl tapılmadı');
@@ -212,7 +220,6 @@
                     }, 200);
                 })
                 .catch(e => {
-                    // Əgər lokal xəta baş verərsə, alternativ olaraq birbaşa link açılır
                     const a = document.createElement('a');
                     a.href = url;
                     a.download = filename;
@@ -225,4 +232,3 @@
     </script>
 </body>
 </html>
-
