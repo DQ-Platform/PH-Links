@@ -186,8 +186,8 @@
 
         <!-- 6. PH-DQ Yeni Suallar -->
         <div class="pdf-group">
-            <a class="btn btn-name" href="PH-DQ%20Yeni%20Suallar(2026).pdf" target="_blank">📄 Pənah Hüseynov(DQ yeni suallar)-2026</a>
-            <button class="btn btn-download" onclick="forceDownload('PH-DQ%20Yeni%20Suallar(2026).pdf', 'PH-DQ_Yeni_Suallar_2026.pdf')" title="Yüklə">📥</button>
+            <a class="btn btn-name" href="Panah Hüseynov(DQ yeni suallar)-2026.pdf" target="_blank">📄 Pənah Hüseynov(DQ yeni suallar)-2026</a>
+            <button class="btn btn-download" onclick="forceDownload('Panah Hüseynov(DQ yeni suallar)-2026.pdf', 'Panah_Huseynov_DQ_Yeni_Suallar_2026.pdf')" title="Yüklə">📥</button>
         </div>
         
         <div class="section-title">Sosial Şəbəkə</div>
@@ -207,7 +207,9 @@
         function forceDownload(url, filename) {
             showToast("Yükləmə başladılır...");
             
-            fetch(url)
+            const safeUrl = encodeURI(url);
+            
+            fetch(safeUrl)
                 .then(response => {
                     if (!response.ok) throw new Error('Fayl tapılmadı');
                     return response.blob();
@@ -226,7 +228,7 @@
                 })
                 .catch(e => {
                     const a = document.createElement('a');
-                    a.href = url;
+                    a.href = safeUrl;
                     a.download = filename;
                     a.target = '_blank';
                     document.body.appendChild(a);
