@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dövlət Qulluğu - Linklər və Qruplər</title>
+    <title>Dövlət Qulluğu - Linklər və Qruplar</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -12,27 +12,30 @@
             color: #ffffff;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
         .container {
             background: #161b22;
             width: 100%;
-            max-width: 480px;
-            padding: 30px 20px;
-            border-radius: 20px;
+            padding: 20px 15px;
+            border-radius: 15px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             text-align: center;
             border: 1px solid #30363d;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
         .logo {
             width: 110px;
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin: 0 auto 15px auto;
             border: 3px solid #25D366;
+            display: block;
         }
         h1 { font-size: 22px; font-weight: bold; margin-bottom: 5px; color: #f0f6fc; }
         .subtitle { font-size: 14px; color: #8b949e; margin-bottom: 25px; }
@@ -60,12 +63,61 @@
             font-weight: 600;
             transition: transform 0.2s ease, opacity 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border: none;
         }
         .btn:active { transform: scale(0.98); }
         .btn:hover { opacity: 0.9; }
         .whatsapp { background-color: #25D366; }
         .telegram { background-color: #0088cc; }
         .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+        .pdf-group {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        .pdf-group .btn {
+            margin: 0;
+            font-size: 14px;
+            padding: 14px 10px;
+        }
+        .btn-name {
+            flex: 4;
+            background-color: #0088cc;
+            justify-content: flex-start;
+            padding-left: 15px;
+            text-align: left;
+        }
+        .btn-download {
+            flex: 1;
+            background-color: #238636;
+            font-size: 18px;
+        }
+        
+        #toast {
+            visibility: hidden;
+            min-width: 240px;
+            background-color: #238636;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.4s, fadeout 0.4s 2.5s;
+        }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body>
@@ -102,15 +154,87 @@
         <b>Ən son yenilənmiş versiyadır.</b>
         </p>
 
-        <a class="btn telegram" href="ac.pdf" target="_blank">📄 AC</a>
-        <a class="btn telegram" href="bb-ba.pdf" target="_blank">📄 BB BA</a>
-        <a class="btn telegram" href="kateqoriyalar.pdf" target="_blank">📄 DQ (Kateqoriya)</a>
-        <a class="btn telegram" href="tasnifat.pdf" target="_blank">📄 DQ (Təsnifat)</a>
-        <a class="btn telegram" href="ixtisas.pdf" target="_blank">📄 DQ (İxtisas dərəcəsi)</a>
+        <!-- 1. PH-AC Vəsait -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf" target="_blank">📄 PH-AC Vəsait(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-AC) - 01 avqust 2026-1 (4).pdf', 'Panah_Huseynov_Qanun_AC_2026.pdf')" title="Yüklə">📥</button>
+        </div>
 
+        <!-- 2. PH-BB&BA Vəsait -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf" target="_blank">📄 PH-BB&BA Vəsait(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (Qanun-BB, BA) - 01 avqust 2026 (1).pdf', 'Panah_Huseynov_Qanun_BB_BA_2026.pdf')" title="Yüklə">📥</button>
+        </div>
+
+        <!-- 3. PH-Kateqoriyalar -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="Kateqoriyalar.pdf" target="_blank">📄 PH-Kateqoriyalar(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Kateqoriyalar.pdf', 'Kateqoriyalar_2026.pdf')" title="Yüklə">📥</button>
+        </div>
+
+        <!-- 4. PH-DQ Təsnifat -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf" target="_blank">📄 PH-DQ Təsnifat(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah_Hüseynov_Təsnifatların_tapılması_01_avqust_2026_1_2.pdf', 'Panah_Huseynov_Tesnifat_2026.pdf')" title="Yüklə">📥</button>
+        </div>
+
+        <!-- 5. PH-DQ İxtisas dərəcəsi -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf" target="_blank">📄 PH-DQ İxtisas dərəcəsi(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('Pənah Hüseynov (İxtisas dərəcələri 2026) (2).pdf', 'Panah_Huseynov_Ixtisas_2026.pdf')" title="Yüklə">📥</button>
+        </div>
+
+        <!-- 6. PH-DQ Yeni Suallar -->
+        <div class="pdf-group">
+            <a class="btn btn-name" href="PH-DQ Yeni Suallar(2026).pdf" target="_blank">📄 PH-DQ Yeni Suallar(2026)</a>
+            <button class="btn btn-download" onclick="forceDownload('PH-DQ Yeni Suallar(2026).pdf', 'PH-DQ_Yeni_Suallar_2026.pdf')" title="Yüklə">📥</button>
+        </div>
+        
         <div class="section-title">Sosial Şəbəkə</div>
         <a class="btn instagram" href="https://www.instagram.com/dovletqulluguqanunvericilik?utm_source=qr&igsh=MXVldWV0OTIyaXp5eQ==" target="_blank">Instagram Hesabımız</a>
     </div>
 
+    <div id="toast">Fayl yüklənir...</div>
+
+    <script>
+        function showToast(text) {
+            var x = document.getElementById("toast");
+            x.innerText = text;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+
+        function forceDownload(url, filename) {
+            showToast("Yükləmə başladılır...");
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Fayl tapılmadı');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(new Blob([blob], { type: 'application/octet-stream' }));
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(blobUrl);
+                        document.body.removeChild(a);
+                    }, 200);
+                })
+                .catch(e => {
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    a.target = '_blank';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+        }
+    </script>
 </body>
 </html>
+
